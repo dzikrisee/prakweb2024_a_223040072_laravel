@@ -86,9 +86,7 @@ URL: https://flowbite.com/docs/components/typography/
                         
                         
                     </footer>
-                    <p>Very straight-to-point article. Really worth time reading. Thank you! But tools are just the
-                        instruments for the UX designers. The knowledge of the design tools are as important as the
-                        creation of the design strategy.</p>
+                    
                     <div class="flex items-center mt-4 space-x-4">
                         <button type="button"
                             class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400">
