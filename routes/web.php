@@ -22,7 +22,7 @@ Route::get('/contact', function () {
 
 Route::get('/posts', function () {
 
-    return view('posts',  ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(5)]);
+    return view('posts',  ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9)]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {

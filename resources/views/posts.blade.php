@@ -26,7 +26,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> 
 
     {{ $posts->links() }}
 
@@ -74,6 +74,8 @@
                 @endforelse
     </div>  
 </div>
+
+{{ $posts->links() }}
 
     
 </x-layout>
