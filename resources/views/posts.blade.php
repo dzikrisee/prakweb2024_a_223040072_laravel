@@ -46,7 +46,7 @@
                                         {{ Str::limit($post->body,150) }}
                                     </p>
                                     <div class="flex justify-between items-center">
-                                        <a href="/authors/{{ $post->author->username }}">
+                                        <a href="/posts?author={{ $post->author->username }}">
                                             <div class="flex items-center space-x-3">
                                                 <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="{{ $post->author->name }}" />
                                                 <span class="font-medium text-sm dark:text-white">
