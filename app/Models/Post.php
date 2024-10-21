@@ -24,8 +24,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeFilter(Builder $query): void
+    public function scopeFilter(Builder $query, array $filters): void
     {
-        $query->where('title', 'like', '%' . request('search') . '%');
+        $query->when($filters['search'] ?? false, 
+        fn ($query, $search) =>
+            $query->where('title', 'like', '%' . $search . '%')
+        ); 
     }
 }
