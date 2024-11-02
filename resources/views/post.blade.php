@@ -79,7 +79,7 @@ URL: https://flowbite.com/docs/components/typography/
                 </li>
             </ol> --}}
             
-            <section class="not-format">
+            {{-- <section class="not-format">
                 
                 <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
                     <footer class="flex justify-between items-center mb-2">
@@ -196,7 +196,7 @@ URL: https://flowbite.com/docs/components/typography/
                     </div>
                 </article>
                 
-            </section>
+            </section> --}}
         </article>
     </div>
   </main>

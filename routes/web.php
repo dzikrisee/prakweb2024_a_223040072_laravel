@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 
 
@@ -38,3 +40,9 @@ Route::get('/authors/{user:username}', function (User $user) {
 
     return view('posts', ['title' => count($user->posts) . ' Articles by ' . $user->name, 'posts' => $user->posts]);
 });
+
+
+Route::get('/login', [LoginController::class, 'index']);
+
+
+Route::get('/register', [RegisterController::class, 'index']);
