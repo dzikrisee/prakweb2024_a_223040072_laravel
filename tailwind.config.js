@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
+
 export default {
     darkMode: "class",
     content: [
@@ -51,3 +53,5 @@ export default {
     plugins: [require("flowbite/plugin"), require("flowbite-typography")],
     safelist: ["bg-red-100", "bg-blue-100", "bg-green-100", "bg-yellow-100"],
 };
+
+
