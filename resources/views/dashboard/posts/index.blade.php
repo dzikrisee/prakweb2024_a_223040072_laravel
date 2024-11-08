@@ -16,7 +16,10 @@
     </div>
 </div>
 <div class="mt-10 bg-white p-6 rounded-lg shadow-md">
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Activity Table</h3>
+    <a href="/dashboard/posts/create" class="bg-indigo-600 text-white px-5 py-2 rounded mb-4">
+        Create New Post
+    </a>
+    <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-5">Activity Table</h3>
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-200">
             <thead>
