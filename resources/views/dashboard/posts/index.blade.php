@@ -5,11 +5,7 @@
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-semibold text-gray-800">My Posts</h1>
 
-    @if (session('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
+    
 
     <div class="flex items-center space-x-4">
         <form action="/logout" method="post">
@@ -26,6 +22,11 @@
     <a href="/dashboard/posts/create" class="bg-indigo-600 text-white px-5 py-2 rounded mb-4">
         Create New Post
     </a>
+    @if (session('success'))
+        <div class="p-4 mb-4 mt-3 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+            <span class="font-medium">{{ session('success') }}</span> 
+        </div>
+    @endif
     <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-5">Activity Table</h3>
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-200">

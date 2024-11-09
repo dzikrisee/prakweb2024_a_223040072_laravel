@@ -39,14 +39,14 @@ class DashboardPostController extends Controller
     {
 
         $validatedData = $request->validate([
-            'tittle' => 'required|max:255',
+            'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
             'body' => 'required'
         ]);
 
-        $validatedData['author_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['author_id'] = Auth::id();
+        $validatedData['body'] = Str::limit(strip_tags($request->body), 200);
 
         Post::create($validatedData);
         return redirect('/dashboard/posts')->with('success', 'Post created!');
