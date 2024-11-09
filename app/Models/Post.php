@@ -2,27 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
+
     use HasFactory, Sluggable;
-
-    protected $guarded = ['id'];
-
-    protected $fillable = ['title', 'author', 'slug', 'body'];
-
+    protected $fillable = ['title', 'slug', 'category_id', 'author_id', 'body', 'excerpt'];
     protected $with = ['author', 'category'];
-
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -31,9 +26,9 @@ class Post extends Model
     public function scopeFilter(Builder $query, array $filters): void
     {
         $query->when(
-            $filters['search'] ?? false,
+            isset($filters['search']) ? $filters['search'] : false,
             fn($query, $search) =>
-            $query->where('title', 'like', '%' . $search . '%')
+            $query->where('tittle', 'like', '%' . $search . '%')
         );
 
         $query->when(
@@ -54,11 +49,12 @@ class Post extends Model
         return 'slug';
     }
 
+
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'tittle'
             ]
         ];
     }

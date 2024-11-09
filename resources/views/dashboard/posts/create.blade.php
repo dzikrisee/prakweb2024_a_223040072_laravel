@@ -10,6 +10,7 @@
                 <span data-feather="log-out" class="w-5 h-5"></span> 
                 <span>Logout</span>
             </button>
+
             
           </form>      
     </div>
@@ -19,26 +20,60 @@
 <div class="col-lg-8">
     <form class="max-w-sm  text-black" method="post" action="/dashboard/posts">
       @csrf
+
+        {{-- Title --}}
         <div class="mb-5">
           <label for="title" class="block mb-2 text-sm font-medium">Title</label>
-          <input type="text" id="title" name="title" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required autofocus />
+          <input type="text" id="title" name="title" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('title') is-invalid @enderror" required autofocus value="{{ old('title') }}" />
+          @error('title')
+            <div class="invalid-feedback text-red-500 mt-2">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
+
+        {{-- Slug --}}
         <div class="mb-5">
           <label for="slug" class="block mb-2 text-sm font-medium">Slug</label>
-          <input type="text" id="slug" name="slug" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required disabled readonly/>
+          <input type="text" id="slug" name="slug" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('slug') is-invalid @enderror" required readonly value="{{ old('slug') }}">
+
+          @error('slug')
+            <div class="invalid-feedback text-red-500 mt-2">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
+
+        {{-- Category --}}
         <div class="mb-5">
           <label for="category" class="block mb-2 text-sm font-medium">Category</label>
-            <select id="category" name="category_id" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-primary-500 block w-full p-2.5    dark:focus:ring-primary-500 dark:focus:border-primary-500">
+            <select id="category" name="category_id" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-primary-500 block w-full p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500 @error('category') is-invalid @enderror" autofocus value="{{ old('category') }}" required>
               @foreach ( $categories as $category )
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @if (old('category_id') == $category->id)
+                  <option value="{{ $category->id }}" selected >{{ $category->name }}</option>
+                @else
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endif
               @endforeach
             </select>
+
+            @error('category')
+              <div class="invalid-feedback text-red-500 mt-2">
+                {{ $message }}
+              </div>
+            @enderror
         </div>
+
+        {{-- Body --}}
         <div class="mb-5">
           <label for="body" class="block mb-2 text-sm font-medium">Body</label>
-          <input id="body" type="hidden" name="body">
+          <input id="body" type="hidden" name="body" required value="{{ old('body') }}">
           <trix-editor input="body"></trix-editor>
+          @error('body')
+            <p class="invalid-feedback text-red-500 mt-2">
+              {{ $message }}
+            </p>
+          @enderror
         </div>
 
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Post</button>

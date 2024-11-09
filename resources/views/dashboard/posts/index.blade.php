@@ -4,6 +4,13 @@
 @section('container')
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-semibold text-gray-800">My Posts</h1>
+
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="flex items-center space-x-4">
         <form action="/logout" method="post">
             @csrf
