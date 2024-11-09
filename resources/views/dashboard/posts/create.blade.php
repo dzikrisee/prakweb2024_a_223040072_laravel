@@ -65,7 +65,8 @@
         {{-- Image --}}
         <div class="mb-5">
           <label class="block mb-2 text-sm font-medium text-gray-900 " for="image">Image</label>
-          <input class="block w-full text-lg  border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none @error('image') is-invalid @enderror" id="image" name="image" type="file">
+          <img class="img-preview img-fluid">
+          <input class="block w-full text-lg  border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none @error('image') is-invalid @enderror" id="image" name="image" type="file" onchange="previewImage()">
 
           @error('image')
             <div class="invalid-feedback text-red-500 mt-2">
@@ -123,6 +124,20 @@
     oFReader.onload = function(oFREvent) {
       imgPreview.src = oFREvent.target.result;
     };
+  }
+
+
+  // 
+  const image = document.querySelector('#image');
+  const imgPreview = document.querySelector('.img-Preview');
+
+  imgPreview.style.display = 'block';
+
+  const oFReader = new FileReader();
+  oFReader.readAsDataURL(image.files[0]);
+
+  oFReader.onload = function(oFEvent) {
+    imgPreview.src = oFEvent.target.result;
   }
 </script>
   
