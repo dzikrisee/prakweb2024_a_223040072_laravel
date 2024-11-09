@@ -9,14 +9,19 @@
             <i data-feather="arrow-left" class="w-5 h-5 mr-2"></i>
             Back to all my posts
         </a>
-        <a href="#" class="inline-flex items-center text-yellow-500 hover:text-yellow-700 px-4 py-2 rounded-lg border border-yellow-500 hover:bg-yellow-100">
+        <a href="/dashboard/posts/{{ $post->slug }}/edit" class="inline-flex items-center text-yellow-500 hover:text-yellow-700 px-4 py-2 rounded-lg border border-yellow-500 hover:bg-yellow-100">
             <i data-feather="edit" class="w-5 h-5 mr-2"></i>
             Edit
         </a>
-        <a href="#" class="inline-flex items-center text-red-600 hover:text-red-800 px-4 py-2 rounded-lg border border-red-800 hover:bg-red-100">
-            <i data-feather="x-circle" class="w-5 h-5 mr-2"></i>
-            Delete
-        </a>
+        <!-- Delete Button -->
+        <form action="/dashboard/posts/{{ $post->slug }}" method="post" onsubmit="return confirm('Are you sure?')" class="inline">
+            @method('delete')
+            @csrf
+            <button type="submit" class="inline-flex items-center text-red-600 hover:text-red-800 px-4 py-2 rounded-lg border border-red-800 hover:bg-red-100">
+                <i data-feather="trash-2" class="w-5 h-5 mr-2"></i>
+                Delete
+            </button>
+        </form>
 
         <header class="mb-4 lg:mb-6 not-format">
             <address class="flex items-center my-6 not-italic">

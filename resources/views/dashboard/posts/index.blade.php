@@ -24,7 +24,7 @@
     </a>
     @if (session('success'))
         <div class="p-4 mb-4 mt-3 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
-            <span class="font-medium">{{ session('success') }}</span> 
+            <span class="font-large">{{ session('success') }}</span> 
         </div>
     @endif
     <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-5">Activity Table</h3>
@@ -53,14 +53,20 @@
                             </a>
                             
                             <!-- Edit Button -->
-                            <a href="/dashboard/posts/{{ $post->slug }}" class="text-yellow-500 hover:text-yellow-700">
+                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="text-yellow-500 hover:text-yellow-700">
                                 <i data-feather="edit" class="w-5 h-5"></i>
                             </a>
                             
                             <!-- Delete Button -->
-                            <button class="text-red-600 hover:text-red-800">
-                                <i data-feather="trash-2" class="w-5 h-5"></i>
-                            </button>
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" onsubmit="return confirm('Are you sure?')">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="text-red-500 hover:text-red-700">
+                                    <i data-feather="trash-2" class="w-5 h-5"></i>
+                                </button>
+                            </form>
+
+                        
                         </div>
                     </td>
                 </tr>
