@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('body');
             $table->timestamps();
+            $table->string('image')->nullable(); // Tipe data untuk path gambar
+
         });
     }
 

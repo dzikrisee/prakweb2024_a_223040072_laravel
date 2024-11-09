@@ -43,12 +43,15 @@ URL: https://flowbite.com/docs/components/typography/
                 <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $post->title }}</h1>
             </header>
             
-            <p>{{ $post->body }}</p>
+            
 
-            {{-- <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
+            <figure>
+                <img src="{{ asset('storage/'. $post->image) }}" alt="">
                 <figcaption>Digital art by Anonymous</figcaption>
             </figure>
-            <h2>Getting started with Flowbite</h2>
+
+            {!!$post->body!!}
+            {{-- <h2>Getting started with Flowbite</h2>
             <p>First of all you need to understand how Flowbite works. This library is not another framework.
                 Rather, it is a set of components based on Tailwind CSS that you can just copy-paste from the
                 documentation.</p>
@@ -77,7 +80,7 @@ URL: https://flowbite.com/docs/components/typography/
                 <li><strong>Communicating your vision</strong>. By using an interactive medium to preview and test
                     design elements, designers and developers can understand each other — and the project — better.
                 </li>
-            </ol> --}}
+            </ol>  --}}
             
             {{-- <section class="not-format">
                 
@@ -199,7 +202,7 @@ URL: https://flowbite.com/docs/components/typography/
             </section> --}}
         </article>
     </div>
-  </main>
+</main>
   
   <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-screen-xl">

@@ -42,6 +42,9 @@
                                         </a>
                                         <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                                     </div>
+
+                                    {{-- <img src="{{ asset('storage/'. $post->image) }}" alt="{{ $post->category->name }}" > --}}
+
                                     <a href="/posts/{{ $post->slug }}" class="">
                                         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:underline">
                                             {{ $post->title }}

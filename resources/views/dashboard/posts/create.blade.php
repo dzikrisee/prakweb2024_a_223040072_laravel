@@ -10,15 +10,13 @@
                 <span data-feather="log-out" class="w-5 h-5"></span> 
                 <span>Logout</span>
             </button>
-            
-            
           </form>      
     </div>
 </div>
 
 
 <div class="col-lg-8">
-    <form class="max-w-sm  text-black" method="post" action="/dashboard/posts">
+    <form class="max-w-sm  text-black" method="post" action="/dashboard/posts"  enctype="multipart/form-data">
       @csrf
 
         {{-- Title --}}
@@ -63,6 +61,19 @@
               </div>
             @enderror
         </div>
+
+        {{-- Image --}}
+        <div class="mb-5">
+          <label class="block mb-2 text-sm font-medium text-gray-900 " for="image">Image</label>
+          <input class="block w-full text-lg  border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none @error('image') is-invalid @enderror" id="image" name="image" type="file">
+
+          @error('image')
+            <div class="invalid-feedback text-red-500 mt-2">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+
 
         {{-- Body --}}
         <div class="mb-5">

@@ -37,20 +37,27 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'image' => 'image|file|max:1024',
             'body' => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('img');
+        }
 
         $validatedData['author_id'] = Auth::id();
         $validatedData['body'] = Str::limit(strip_tags($request->body), 200);
 
+        // Simpan ke database
         Post::create($validatedData);
+
         return redirect('/dashboard/posts')->with('success', 'Post created!');
     }
+
 
     /**
      * Display the specified resource.
